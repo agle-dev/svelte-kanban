@@ -1,5 +1,3 @@
-import path from 'path';
-
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
 
@@ -13,12 +11,6 @@ export default defineConfig({
 		devSourcemap: true, // enable CSS source maps during development
 	},
 	plugins: [sveltekit()],
-	resolve: {
-		alias: {
-			$lib: path.resolve("./src/lib"),
-			$stores: path.resolve("./src/lib/stores")
-		}
-	},
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
 	}
