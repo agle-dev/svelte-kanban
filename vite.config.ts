@@ -5,13 +5,13 @@ export default defineConfig({
 	// Source Maps
 	// See https://web.dev/source-maps/
 	build: {
-		// sourcemap: true // enable production source maps
+		// sourcemap: true, // enable production source maps
 	},
 	css: {
 		devSourcemap: true, // enable CSS source maps during development
 	},
 	plugins: [sveltekit()],
 	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}']
-	}
+		include: ['src/**/*.{test,spec}.{js,ts}'],
+	},
 });

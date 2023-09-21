@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
+	import {createEventDispatcher} from 'svelte';
 	import Column from './components/Column/Column.svelte';
 	import AddColumnBtn from './components/AddColumnBtn.svelte';
 	import {getBoard, getLang, useCrdt, getDragDrop} from '$stores';
@@ -12,7 +12,7 @@
 	const STARTING_POINT_TOP = 98;
 	const HEIGHT_CARD = 105; // 96
 	const REAL_STARTING_POINT_TOP = STARTING_POINT_TOP + HEIGHT_CARD/2; // The first point of reference is the middle of the first card (if there is one)
-	const DRAG_CARD_DOWN_SAME_COLUMN_OFFSET_Y = 2*HEIGHT_CARD_CONTAINER - STARTING_POINT_TOP;
+	const DRAG_CARD_UP_WITHIN_COLUMN_OFFSET_Y = HEIGHT_CARD_CONTAINER + (HEIGHT_CARD_CONTAINER-HEIGHT_CARD);
 
 	// Properties of the Kanban
 	export let theme 			= 'light';
@@ -28,6 +28,10 @@
     const globalLang = getLang(lang);
     const dragDrop = getDragDrop();
 
+	// Uncomment this to troubleshoot drag and drop
+	// $: console.log(JSON.stringify($dragDrop,null,2))
+
+	// Default categories
 	export let catsList = [{
             label:$globalLang.getStr('new'),
 			color:'white',
@@ -166,9 +170,10 @@
 					const diff = position_order - $dragDrop.from.card;
 					if (diff && diff !== 1) {
 						if (diff < 0) {
-							// The empty card (drop target) is below the card that's being dragged so the dragged card
-							// needs to be nudged higher
-							y_live -= DRAG_CARD_DOWN_SAME_COLUMN_OFFSET_Y;
+							// Dragging up
+							// The empty card (drop target) appears above the card that's being dragged, pushing it down.
+							// Compensate by moving the dragged card up.
+							y_live -= DRAG_CARD_UP_WITHIN_COLUMN_OFFSET_Y;
 						}
 						$dragDrop.to.col = i;
 					}
@@ -195,6 +200,7 @@
 
 		try {
 			if ($dragDrop.from.col < 0) return;
+
 			const elem_dragged = document.getElementById(`card-${$dragDrop.from.card}-col-${$dragDrop.from.col}`);
 			if (!elem_dragged) return;
 			elem_dragged.style.removeProperty('top');
@@ -206,28 +212,34 @@
 			const { cards } = $board.columns[$dragDrop.from.col];
 			if ($dragDrop.from.card >= cards.length) return;
 
-			let card = cards[$dragDrop.from.card];
-			if (useCrdt) card = JSON.parse(JSON.stringify(card));
+			let cardObj = cards[$dragDrop.from.card];
 
-			// Dragged in the same column?
 			if ($dragDrop.from.col === $dragDrop.to.col) {
+				// Drag and drop in the same column
+				if ($dragDrop.to.card > (cards.length+1)) return;
+
+				if (useCrdt) cardObj = JSON.parse(JSON.stringify(cardObj));
+
 				// Remove the card
 				cards.splice($dragDrop.from.card, 1);
+
 				// Add the card
 				if ($dragDrop.from.card < $dragDrop.to.card) {
-					cards.splice($dragDrop.to.card-1, 0, card);
+					cards.splice($dragDrop.to.card-1, 0, cardObj);
 				} else {
-					cards.splice($dragDrop.to.card, 0, card);
+					cards.splice($dragDrop.to.card, 0, cardObj);
 				}
 			} else {
+				// Drag and drop in different columns
 				if ($dragDrop.to.col >= $board.columns.length) return;
 				const { cards: toCards } = $board.columns[$dragDrop.to.col];
-				if ($dragDrop.to.card > toCards.length) return;
+				if ($dragDrop.to.card > (toCards.length+1)) return;
 
+				if (useCrdt) cardObj = JSON.parse(JSON.stringify(cardObj));
 				// Remove the card
 				cards.splice($dragDrop.from.card, 1);
 				// Add the card
-				toCards.splice($dragDrop.to.card, 0, card);
+				toCards.splice($dragDrop.to.card, 0, cardObj);
 			}
 
 			if (!useCrdt) $board = $board;
@@ -303,11 +315,11 @@
 		const { cards } = $board.columns[event.detail.col];
 		if (event.detail.card >= cards.length) return;
 
-		let card = cards[event.detail.card];
-		if (useCrdt) card = JSON.parse(JSON.stringify(card));
+		let cardObj = cards[event.detail.card];
+		if (useCrdt) cardObj = JSON.parse(JSON.stringify(cardObj));
 
 		cards.splice(event.detail.card, 1);
-		cards.splice((event.detail.card-1), 0, card);
+		cards.splice(event.detail.card-1, 0, cardObj);
 
 		if (!useCrdt) $board = $board;
 
@@ -319,11 +331,11 @@
 		const { cards } = $board.columns[event.detail.col];
 		if (event.detail.card >= cards.length) return;
 
-		let card = cards[event.detail.card];
-		if (useCrdt) card = JSON.parse(JSON.stringify(card));
+		let cardObj = cards[event.detail.card];
+		if (useCrdt) cardObj = JSON.parse(JSON.stringify(cardObj));
 
 		cards.splice(event.detail.card, 1);
-		cards.splice((event.detail.card+1), 0, card);
+		cards.splice((event.detail.card+1), 0, cardObj);
 
 		if (!useCrdt) $board = $board;
 
