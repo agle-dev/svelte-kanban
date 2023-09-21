@@ -1,6 +1,6 @@
 {
 	"name": "@goodware/svelte-kanban",
-	"version": "1.1.20",
+	"version": "1.1.19",
 	"scripts": {
 		"build": "npm run build-vite && npm run package",
 		"build-vite": "rm -rf dist && vite build",
@@ -44,8 +44,11 @@
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/kit": "^1.25.0",
 		"@sveltejs/package": "^2.2.2",
+<<<<<<< HEAD
 		"@syncedstore/core": "0.6.0-alpha.0",
 		"@syncedstore/svelte": "0.6.0-alpha.0",
+=======
+>>>>>>> chore-60
 		"@typescript-eslint/eslint-plugin": "^6.7.2",
 		"@typescript-eslint/parser": "^6.7.2",
 		"eslint": "^8.49.0",
