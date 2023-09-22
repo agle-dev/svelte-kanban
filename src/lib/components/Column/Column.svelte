@@ -20,9 +20,6 @@
     const globalLang = getLang();
     const dragDrop = getDragDrop();
 
-    let dropHere = false;
-    $: dropHere = $dragDrop.to.col === index_col;
-
 	let column;
 	$: column = $board.columns[index_col];
 
@@ -34,6 +31,9 @@
 
 	let title;
 	$: title = column.title;
+
+    let dropHere = false;
+    $: dropHere = $dragDrop.to.col === index_col;
 
     function handleMouseDown(e, index_card:number){
         if(e.target instanceof HTMLButtonElement) return;
