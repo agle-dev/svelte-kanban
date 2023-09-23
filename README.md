@@ -4,7 +4,7 @@
   - [This PR](https://github.com/V-Py/svelte-kanban/pull/84) refactored V-Py/Svelte-Kanban to use Yjs documents via [SvelteSyncedStore](https://syncedstore.org/docs/svelte/)
   - [This PR](https://github.com/agle-dev/svelte-kanban-crdt/pulls/1) added CRDT functionality to it
 - Here's a [movie](https://github-production-user-asset-6210df.s3.amazonaws.com/12297328/263563652-e4c8b0ee-6128-4c9c-b3f6-6f439610da1a.mp4) demonstrating multiple browsers
-- The interface is currently the same as V-Py/Svelte-Kanban
+- The interface is currently the same as V-Py/Svelte-Kanban. It will be changed to also accept a Yjs document.
 
 ## Dev Mode
 
