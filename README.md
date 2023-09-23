@@ -7,7 +7,7 @@ The interface is currently the same. If you would like to try out the functional
 ## Dev Mode
 
 ```sh
-git clone https://github.com/agle-dev/svelte-kanban.git
+git clone https://github.com/agle-dev/svelte-kanban-crdt.git
 cd svelte-kanban
 npm install
 npm run dev
