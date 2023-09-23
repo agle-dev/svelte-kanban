@@ -1,10 +1,12 @@
 # Svelte-Kanban-CRDT
 
-This is a fork of [V-Py/Svelte-Kanban](https://github.com/V-Py/svelte-kanban) and adds multiuser functionality via Y-Js.
-
-The interface is currently the same. If you would like to try out the functionality, run this project in dev mode.
+- This is a fork of [V-Py/Svelte-Kanban](https://github.com/V-Py/svelte-kanban) with multiuser functionality provided by [Yjs](https://github.com/yjs/yjs) documents
+- Here's a [movie](https://github-production-user-asset-6210df.s3.amazonaws.com/12297328/263563652-e4c8b0ee-6128-4c9c-b3f6-6f439610da1a.mp4) demonstrating multiple browsers
+- The interface is currently the same as V-Py/Svelte-Kanban
 
 ## Dev Mode
+
+The easiest way to try this component is to run it in dev mode.
 
 ```sh
 git clone https://github.com/agle-dev/svelte-kanban-crdt.git
@@ -13,7 +15,9 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173 in two tabs in the same browser. If you would like to use two different web browsers (eg Chrome and Safari), first run:
+Open http://localhost:5173 in two tabs in the same browser.
+
+To use two different web browsers (eg Chrome and Safari), first run:
 
 ```sh
 PORT=4444 npx y-webrtc server.js
