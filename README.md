@@ -4,6 +4,8 @@ This is a fork of [V-Py/Svelte-Kanban](https://github.com/V-Py/svelte-kanban) an
 
 The interface is currently the same. If you would like to try out the functionality, run this project in dev mode.
 
+This component should not be used until props can specify the Yjs document.
+
 ## Dev Mode
 
 ```sh
