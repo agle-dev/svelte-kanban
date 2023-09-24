@@ -17,9 +17,13 @@
 		"test:integration": "playwright test",
 		"test:unit": "vitest"
 	},
+        "repository": {
+                "type": "git",
+                "url": "https://github.com/agle-dev/svelte-kanban-crdt"
+        },
 	"author": {
-		"name": "dev-guy",
-		"email": "devguy@devguy.com",
+		"name": "agle.dev",
+		"email": "agle-dev@devguy.com",
 		"url": "https://github.com/agle-dev"
 	},
 	"engines": {
