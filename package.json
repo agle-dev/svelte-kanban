@@ -1,6 +1,6 @@
 {
-	"name": "svelte-kanban",
-	"version": "1.1.0",
+	"name": "@goodware/svelte-kanban-crdt",
+	"version": "1.1.23",
 	"scripts": {
 		"build": "npm run build-vite && npm run package",
 		"build-vite": "rm -rf dist && vite build",
@@ -18,24 +18,9 @@
 		"test:unit": "vitest"
 	},
 	"author": {
-		"name": "Valentin Py",
-		"email": "valentin.pyb@gmail.com",
-		"url": "https://github.com/V-Py"
-	},
-	"keywords": [
-		"svelte",
-		"kanban",
-		"svelte-kanban",
-		"js-kanban",
-		"drag-n-drop",
-		"trello-like"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/V-Py/svelte-kanban"
-	},
-	"bugs": {
-		"url": "https://github.com/V-Py/svelte-kanban/issues"
+		"name": "dev-guy",
+		"email": "devguy@devguy.com",
+		"url": "https://github.com/agle-dev"
 	},
 	"engines": {
 		"node": ">=16.14"
@@ -53,6 +38,11 @@
 	],
 	"peerDependencies": {
 		"svelte": "^3.46.4 || ^4.0.0"
+	},
+	"dependencies": {
+		"@syncedstore/core": "0.6.0-alpha.0",
+		"@syncedstore/svelte": "0.6.0-alpha.0",
+		"y-webrtc": "^10.2.5"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.38.0",
@@ -73,7 +63,7 @@
 		"tslib": "^2.6.2",
 		"typescript": "^5.2.2",
 		"vite": "^4.4.9",
-		"vitest": "^0.34.4"
+		"vitest": "^0.34.5"
 	},
 	"svelte": "./dist/index.js",
 	"type": "module",

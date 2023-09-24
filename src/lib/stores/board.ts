@@ -2,10 +2,10 @@
 
 // ======================================	
 // When using CRDT comment out this block
-// /*
+/*
 export const useCrdt = false;
 import { writable } from 'svelte/store';
-// */
+*/
 
 // ====================================
 // When using CRDT uncomment this block
@@ -13,12 +13,12 @@ import { writable } from 'svelte/store';
 // "@syncedstore/core": "0.6.0-alpha.0",
 // "@syncedstore/svelte": "0.6.0-alpha.0",
 // "y-webrtc": "^10.2.5"
-/*
+// /*
 export const useCrdt = true;
 import { syncedStore, getYjsDoc } from '@syncedstore/core';
 import { svelteSyncedStore } from '@syncedstore/svelte';
 import { WebrtcProvider } from 'y-webrtc';
-*/
+// */
 
 import { getContext, setContext } from 'svelte';
 import type { Writable } from 'svelte/store';
@@ -33,15 +33,15 @@ export function getBoard(): Writable<Board> {
 
 	// ======================================
 	// When using CRDT comment out this block
-	// /*
+	/*
 	if (useCrdt) throw new Error('useCrdt should be false');
 	obj = writable({ columns: [] });
-	// */
+	*/
 
 	// ====================================================================
 	// When using CRDT uncomment this block
 	// To enable the webrtc provider, run: PORT=4444 npx y-webrtc server.js
-	/*
+	// /*
 	if (!useCrdt) throw new Error('useCrdt should be true');
 	const store = syncedStore({ columns: [] });
 	obj = svelteSyncedStore(store) as unknown as Writable<Board>;
@@ -50,7 +50,7 @@ export function getBoard(): Writable<Board> {
 	});
 	rtc.connect();
 	setContext('web-rtc', rtc);
-	*/
+	// */
 
 	setContext('board', obj);
 	return obj;
