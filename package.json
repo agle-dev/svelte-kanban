@@ -1,6 +1,6 @@
 {
 	"name": "@goodware/svelte-kanban-crdt",
-	"version": "1.1.24",
+	"version": "1.1.25",
 	"scripts": {
 		"build": "npm run build-vite && npm run package",
 		"build-vite": "rm -rf dist && vite build",
@@ -17,10 +17,10 @@
 		"test:integration": "playwright test",
 		"test:unit": "vitest"
 	},
-        "repository": {
-                "type": "git",
-                "url": "https://github.com/agle-dev/svelte-kanban-crdt"
-        },
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/agle-dev/svelte-kanban-crdt"
+	},
 	"author": {
 		"name": "agle.dev",
 		"email": "agle-dev@devguy.com",
@@ -49,13 +49,13 @@
 		"y-webrtc": "^10.2.5"
 	},
 	"devDependencies": {
-		"@playwright/test": "^1.38.0",
+		"@playwright/test": "^1.38.1",
 		"@sveltejs/adapter-auto": "^2.1.0",
-		"@sveltejs/kit": "^1.25.0",
+		"@sveltejs/kit": "^1.25.1",
 		"@sveltejs/package": "^2.2.2",
-		"@typescript-eslint/eslint-plugin": "^6.7.2",
-		"@typescript-eslint/parser": "^6.7.2",
-		"eslint": "^8.49.0",
+		"@typescript-eslint/eslint-plugin": "^6.7.3",
+		"@typescript-eslint/parser": "^6.7.3",
+		"eslint": "^8.50.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-svelte": "^2.33.2",
 		"prettier": "^3.0.3",
@@ -67,7 +67,7 @@
 		"tslib": "^2.6.2",
 		"typescript": "^5.2.2",
 		"vite": "^4.4.9",
-		"vitest": "^0.34.5"
+		"vitest": "^0.34.6"
 	},
 	"svelte": "./dist/index.js",
 	"type": "module",
